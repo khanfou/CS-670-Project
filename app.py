@@ -37,4 +37,6 @@ make_choice = st.sidebar.selectbox('Select the Patent Application Number:', PAN)
 form = st.form(key='patent-form')
 abstract = df["abstract"].loc[df["patent_number"] == make_choice]
 st.markdown(f"Publication abstract is **{abstract}** 🎈")
+claims = df["claims"].loc[df["patent_number"] == make_choice]
+st.markdown(f"Publication abstract is **{claims}** 🎈")
 
