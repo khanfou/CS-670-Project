@@ -13,8 +13,8 @@ from pprint import pprint
 # Datasets load_dataset function
 from datasets import load_dataset
 # Transformers Autokenizer
-from transformers import AutoTokenizer
-tokenizer = AutoTokenizer.from_pretrained('distilbert-base-uncased')
+#from transformers import AutoTokenizer
+#tokenizer = AutoTokenizer.from_pretrained('distilbert-base-uncased')
 # Standard PyTorch DataLoader
 from torch.utils.data import DataLoader
 
