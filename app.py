@@ -19,17 +19,7 @@ from datasets import load_dataset
 from torch.utils.data import DataLoader
 
 
-
-dataset_dict = load_dataset('HUPD/hupd',
-    name='sample',
-    data_files="https://huggingface.co/datasets/HUPD/hupd/blob/main/hupd_metadata_2022-02-22.feather", 
-    cache_dir ='/u/scr/nlp/data/HUPD',
-    icpr_label=None,
-    train_filing_start_date='2016-01-01',
-    train_filing_end_date='2016-01-31',
-    val_filing_start_date='2017-01-01',
-    val_filing_end_date='2017-01-31',
-)
+dataset_dict = load_dataset('HUPD/hupd',name='sample',data_files="https://huggingface.co/datasets/HUPD/hupd/blob/main/hupd_metadata_2022-02-22.feather", cache_dir ='/u/scr/nlp/data/HUPD',icpr_label=None,train_filing_start_date='2016-01-01',train_filing_end_date='2016-01-31',val_filing_start_date='2017-01-01',val_filing_end_date='2017-01-31')
 
 df = pd.DataFrame.from_dict(dataset_dict["train"])
 
