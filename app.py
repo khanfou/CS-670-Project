@@ -1,7 +1,7 @@
 import streamlit as st
 from datasets import load_dataset
 
-dataset_dict = load_dataset("HUPD/hupd",streaming=True, train_filing_start_date='2016-01-01',train_filing_end_date='2016-01-31',val_filing_start_date='2017-01-01',val_filing_end_date='2017-01-31')
+dataset_dict = load_dataset("HUPD/hupd",streaming=True)
 
 df = pd.DataFrame.from_dict(dataset_dict["train"])
 
