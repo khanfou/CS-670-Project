@@ -16,5 +16,6 @@ jobs:
           lfs: true
       - name: Push to hub
         env:
-          HF_TOKEN: ${{ secrets.FINETUNE }}
+          FINETUNE: ${{ secrets.FINETUNE }}
         run: git push --force https://Fouzia:$FINETUNE@huggingface.co/spaces/Fouzia/Harvard-USPTO_Patentability-Score main
+        
