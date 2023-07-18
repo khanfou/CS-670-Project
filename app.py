@@ -29,5 +29,6 @@ dataset_dict = load_dataset('HUPD/hupd',
 )
 
 df = pd.DataFrame.from_dict(dataset_dict["train"])
+df = pd.DataFrame(df,columns =['patent_number','decision', 'abstract', 'claims','filing_date'])
 st.dataframe(df)
 
