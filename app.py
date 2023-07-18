@@ -35,8 +35,6 @@ PAN = df['patent_number'].drop_duplicates()
 make_choice = st.sidebar.selectbox('Select the Patent Application Number:', PAN)
 
 form = st.form(key='patent-form')
-#makes = df['make'].drop_duplicates()
-#make_choice = st.sidebar.selectbox('Select your vehicle:', makes)
-abstract = df["abstract"].loc[df["patent_numebr"] = make_choice]
+abstract = df["abstract"].loc[df["patent_numebr"] == make_choice]
 st.markdown(f"Publication abstract is **{abstract}** 🎈")
 
