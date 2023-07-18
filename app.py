@@ -7,9 +7,7 @@ os.environ['TRANSFORMERS_CACHE'] = f'{HG_DIR}/transformers'
 os.environ['HF_HOME'] = HG_DIR
 
 ## Import relevant libraries and dependencies
-pip install datasets
-pip install Transformers
-pip install streamlit
+#pip install datasets
 # Pretty print
 from pprint import pprint
 # Datasets load_dataset function
