@@ -1,7 +1,7 @@
 import streamlit as st
 from datasets import load_dataset
 
-dataset = load_dataset("HUPD/hupd",'sample',split='train', streaming=True)
+dataset = load_dataset("HUPD/hupd",'all',split='train', streaming=True)
 
 
 #df = pd.DataFrame.from_dict(dataset_dict["train"])
