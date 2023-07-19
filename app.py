@@ -25,16 +25,17 @@ make_choice = st.sidebar.selectbox('Select the Patent Application Number:', PAN)
 pd.options.display.max_colwidth = 100000
 
 abstract = df["abstract"].loc[df["patent_number"] == make_choice]
-st.subheader(':red[Patent Application Abstract]')
+st.subheader(':red[Patent Application]')
+st.subheader(':red[Abstract:]')
 st.info(abstract)
 #st.markdown(f"Publication abstract is **{abstract}** 🎈")
 
 
 claims = df["claims"].loc[df["patent_number"] == make_choice]
-st.subheader(':red[Patent Application Claims]')
+st.subheader(':red[Claim:]')
 st.info(claims)
 #st.markdown(f"Publication Claim is **{claims}** 🎈")
 
 form = st.form(key='patent-form')
-submit = form.form_submit_button('Submit')
+submit = form.sidebar.form_submit_button('Submit')
 
