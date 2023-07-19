@@ -23,7 +23,6 @@ PAN = df['patent_number'].drop_duplicates()
 
 st.title('Harvard USPTO Patentability Score')
 #make_choice = st.sidebar.selectbox('Select the Patent Application Number:', PAN)
-#make_choice = st.sidebar.selectbox('Select the Patent Application Number:', PAN)
 
 #####NEW
 with st.form("patent-form"):
@@ -37,15 +36,14 @@ with st.form("patent-form"):
         tokenizer = AutoTokenizer.from_pretrained(model_name)
         classifier = pipeline("sentiment-analysis", model=model, tokenizer=tokenizer)
         
-        abstract = df['abstract'].loc[df['patent_number'] == make_choice]
+        #abstract = df['abstract'].loc[df['patent_number'] == make_choice]
 
-        #decision = df['decision'].loc[df['patent_number'] == make_choice]
-        X_train = abstract.to_string()
-        #X_train = decision.to_string()
+        decision = df['decision'].loc[df['patent_number'] == make_choice]
+        #X_train = abstract.to_string()
+        X_train = decision.to_string()
         #X_train = abstract.values.tolist()
         results = classifier(X_train, truncation=True)
-        #result = hupd_model(make_choice)[0]
-        #score = results['score']
+
         for result in results:
             print(result)
             score = result['score']
@@ -61,14 +59,9 @@ abstract = df["abstract"].loc[df["patent_number"] == make_choice]
 st.subheader(':red[Patent Application]')
 st.subheader(':red[Abstract:]')
 st.info(abstract)
-#st.markdown(f"Publication abstract is **{abstract}** 🎈")
 
 
 claims = df["claims"].loc[df["patent_number"] == make_choice]
 st.subheader(':red[Claim:]')
 st.info(claims)
-#st.markdown(f"Publication Claim is **{claims}** 🎈")
-
-#form = st.form(key='patent-form')
-#submit = form.sidebar.form_submit_button('Submit')
 
