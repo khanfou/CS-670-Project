@@ -28,10 +28,11 @@ form = st.form(key='patent-form')
 pd.options.display.max_colwidth = 100000
 
 abstract = df["abstract"].loc[df["patent_number"] == make_choice]
-st.markdown(f"Publication abstract is **{abstract}** 🎈")
+st.info(abstract)
+#st.markdown(f"Publication abstract is **{abstract}** 🎈")
 #st.write ("Publication Abstract", abstract)
 
 
 claims = df["claims"].loc[df["patent_number"] == make_choice]
-st.markdown(f"Publication abstract is **{claims}** 🎈")
+st.markdown(f"Publication Claim is **{claims}** 🎈")
 
