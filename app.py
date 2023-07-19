@@ -26,7 +26,7 @@ form = st.form(key='patent-form')
 
 #loooong_text = ' '.join(["abcd efg hijk lmnop lmnop qrst uvw xyz"]*1_000)
 abstract = df["abstract"].loc[df["patent_number"] == make_choice]
-abstract = ''.join(["abstract"]*1_000)
+abstract = ''.join([abstract]*1_000)
 #st.markdown("st.markdown : " + loooong_text)
 st.markdown("Publication abstract is: " + abstract)
 
