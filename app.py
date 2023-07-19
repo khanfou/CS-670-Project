@@ -36,7 +36,7 @@ with st.form("patent-form"):
         model = AutoModelForSequenceClassification.from_pretrained(model_name)
         tokenizer = AutoTokenizer.from_pretrained(model_name)
         classifier = pipeline("sentiment-analysis", model=model, tokenizer=tokenizer)
-        abstract = df['abstract'].loc[df['patent_number'] == make_choice].astype("string)
+        abstract = df['abstract'].loc[df['patent_number'] == make_choice].astype("string")
         #X_train = df['id'].astype("string")
         #X_train = abstract.values.tolist()
         results = classifier(abstract, truncation=True)
