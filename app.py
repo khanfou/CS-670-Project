@@ -24,7 +24,7 @@ st.title('Harvard USPTO Patentability Score')
 
 #####NEW
 with st.form("patent-form"):
-    make_choice = st.sidebar.selectbox('Select the Patent Application Number:', PAN)
+    make_choice = st.selectbox('Select the Patent Application Number:', PAN)
     submitted = st.form_submit_button(label='submit')
     if submitted:
        st.write("Outside the form")
