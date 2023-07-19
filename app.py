@@ -20,7 +20,15 @@ PAN = df['patent_number'].drop_duplicates()
 
 st.title('Harvard USPTO Patentability Score')
 #make_choice = st.sidebar.selectbox('Select the Patent Application Number:', PAN)
-make_choice = st.sidebar.selectbox('Select the Patent Application Number:', PAN)
+#make_choice = st.sidebar.selectbox('Select the Patent Application Number:', PAN)
+
+#####NEW
+with st.form("patent-form"):
+    make_choice = st.sidebar.selectbox('Select the Patent Application Number:', PAN)
+    submitted = st.form_submit_button(label='submit')
+    if submitted:
+       st.write("Outside the form")
+######NEW
 
 pd.options.display.max_colwidth = 100000
 
@@ -36,6 +44,6 @@ st.subheader(':red[Claim:]')
 st.info(claims)
 #st.markdown(f"Publication Claim is **{claims}** 🎈")
 
-form = st.form(key='patent-form')
-submit = form.sidebar.form_submit_button('Submit')
+#form = st.form(key='patent-form')
+#submit = form.sidebar.form_submit_button('Submit')
 
