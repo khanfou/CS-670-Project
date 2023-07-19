@@ -1,5 +1,6 @@
 import streamlit as st
 from datasets import load_dataset
+from transformers import pipeline
 import pandas as pd
 
 from datasets import load_dataset
@@ -26,8 +27,15 @@ st.title('Harvard USPTO Patentability Score')
 with st.form("patent-form"):
     make_choice = st.selectbox('Select the Patent Application Number:', PAN)
     submitted = st.form_submit_button(label='submit')
+    
     if submitted:
-       st.write("Outside the form")
+        #st.write("Outside the form")
+        hupd_model = pipeline(task="fill-mask", model="turingmachine/hupd-distilroberta-base")
+        result = hupd_model(make_choice)[0]
+        score = result['score']
+        st.write("The Patentability Score is:", score)
+    else:
+         st.write("Please Select a Patent Application Number!!")
 ######NEW
 
 pd.options.display.max_colwidth = 100000
