@@ -13,8 +13,8 @@ dataset_dict = load_dataset('HUPD/hupd',
     val_filing_end_date='2017-01-31',
 )
 
-from google.colab import data_table
-data_table.enable_dataframe_formatter()
+#from google.colab import data_table
+#data_table.enable_dataframe_formatter()
 df = pd.DataFrame.from_dict(dataset_dict["train"])
 df = pd.DataFrame(df,columns =['patent_number','decision', 'abstract', 'claims','filing_date'])
 #st.dataframe(df)
@@ -22,8 +22,17 @@ PAN = df['patent_number'].drop_duplicates()
 make_choice = st.sidebar.selectbox('Select the Patent Application Number:', PAN)
 
 form = st.form(key='patent-form')
-abstract = df["abstract"].loc[df["patent_number"] == make_choice]
-st.markdown(f"Publication abstract is **{abstract}** 🎈")
+
+
+#loooong_text = ' '.join(["abcd efg hijk lmnop lmnop qrst uvw xyz"]*1_000)
+abstract = ''.join([df["abstract"].loc[df["patent_number"] == make_choice]]*1_000)
+#st.markdown("st.markdown : " + loooong_text)
+st.markdown("Publication abstract is: " + abstract)
+
+#abstract = df["abstract"].loc[df["patent_number"] == make_choice]
+#st.markdown(f"Publication abstract is **{abstract}** 🎈")
+
+
 claims = df["claims"].loc[df["patent_number"] == make_choice]
 st.markdown(f"Publication abstract is **{claims}** 🎈")
 
