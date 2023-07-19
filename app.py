@@ -18,7 +18,7 @@ df = pd.DataFrame(df,columns =['patent_number','decision', 'abstract', 'claims',
 #st.dataframe(df)
 PAN = df['patent_number'].drop_duplicates()
 
-st.title('Harvard USPTO patentability score')
+st.title('Harvard USPTO Patentability Score')
 #make_choice = st.sidebar.selectbox('Select the Patent Application Number:', PAN)
 make_choice = st.selectbox('Select the Patent Application Number:', PAN)
 
@@ -28,10 +28,10 @@ form = st.form(key='patent-form')
 pd.options.display.max_colwidth = 100000
 
 abstract = df["abstract"].loc[df["patent_number"] == make_choice]
-#st.markdown(f"Publication abstract is **{abstract}** 🎈")
-st.write ("Publication Abstract", abstract)
+st.markdown(f"Publication abstract is **{abstract}** 🎈")
+#st.write ("Publication Abstract", abstract)
 
 
 claims = df["claims"].loc[df["patent_number"] == make_choice]
-#st.markdown(f"Publication abstract is **{claims}** 🎈")
+st.markdown(f"Publication abstract is **{claims}** 🎈")
 
