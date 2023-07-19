@@ -4,7 +4,6 @@ from transformers import pipeline
 import pandas as pd
 import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
-from sklearn.model_selection import train_test_split
 from datasets import load_dataset
 
 dataset_dict = load_dataset('HUPD/hupd',
@@ -37,9 +36,10 @@ with st.form("patent-form"):
         model = AutoModelForSequenceClassification.from_pretrained(model_name)
         tokenizer = AutoTokenizer.from_pretrained(model_name)
         classifier = pipeline("sentiment-analysis", model=model, tokenizer=tokenizer)
-        abstract = df['abstract'].loc[df['patent_number'] == make_choice]
-        X_train = abstract.values.tolist()
-        results = classifier(X_train, truncation=True)
+        abstract = df['abstract'].loc[df['patent_number'] == make_choice].astype("string)
+        #X_train = df['id'].astype("string")
+        #X_train = abstract.values.tolist()
+        results = classifier(abstract, truncation=True)
         #result = hupd_model(make_choice)[0]
         score = result['score']
         st.write("The Patentability Score is:", score)
