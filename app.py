@@ -36,8 +36,12 @@ with st.form("patent-form"):
         model = AutoModelForSequenceClassification.from_pretrained(model_name)
         tokenizer = AutoTokenizer.from_pretrained(model_name)
         classifier = pipeline("sentiment-analysis", model=model, tokenizer=tokenizer)
-        abstract = df['abstract'].loc[df['patent_number'] == make_choice]
-        X_train = abstract.to_string()
+        
+        #abstract = df['abstract'].loc[df['patent_number'] == make_choice]
+
+        decision = df['decision'].loc[df['patent_number'] == make_choice]
+        #X_train = abstract.to_string()
+        X_train = decision.to_string()
         #X_train = abstract.values.tolist()
         results = classifier(X_train, truncation=True)
         #result = hupd_model(make_choice)[0]
