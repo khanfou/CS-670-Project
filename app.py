@@ -41,7 +41,7 @@ with st.form("patent-form"):
         #X_train = abstract.values.tolist()
         results = classifier(X_train, truncation=True)
         #result = hupd_model(make_choice)[0]
-        score = result['score']
+        score = results['score']
         st.write("The Patentability Score is:", score)
 
         
