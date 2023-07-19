@@ -13,8 +13,7 @@ dataset_dict = load_dataset('HUPD/hupd',
     val_filing_end_date='2017-01-31',
 )
 
-#from google.colab import data_table
-#data_table.enable_dataframe_formatter()
+
 df = pd.DataFrame.from_dict(dataset_dict["train"])
 df = pd.DataFrame(df,columns =['patent_number','decision', 'abstract', 'claims','filing_date'])
 #st.dataframe(df)
@@ -24,18 +23,13 @@ make_choice = st.sidebar.selectbox('Select the Patent Application Number:', PAN)
 form = st.form(key='patent-form')
 
 
-#loooong_text = ' '.join(["abcd efg hijk lmnop lmnop qrst uvw xyz"]*1_000)
-#abstract = df["abstract"].loc[df["patent_number"] == make_choice]
-#abstract = ''.join([abstract]*1_000)
-#st.markdown("st.markdown : " + loooong_text)
-#st.markdown("Publication abstract is: " + abstract)
-
 pd.options.display.max_colwidth = 100000
+
 abstract = df["abstract"].loc[df["patent_number"] == make_choice]
-#st.write(abstract.to_html(), unsafe_allow_html=True)
-st.markdown(f"Publication abstract is **{abstract}** 🎈")
+#st.markdown(f"Publication abstract is **{abstract}** 🎈")
+st.write ("Publication Abstract \n": abstract)
 
 
 claims = df["claims"].loc[df["patent_number"] == make_choice]
-st.markdown(f"Publication abstract is **{claims}** 🎈")
+#st.markdown(f"Publication abstract is **{claims}** 🎈")
 
