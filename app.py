@@ -37,9 +37,9 @@ with st.form("patent-form"):
         tokenizer = AutoTokenizer.from_pretrained(model_name)
         classifier = pipeline("sentiment-analysis", model=model, tokenizer=tokenizer)
         abstract = df['abstract'].loc[df['patent_number'] == make_choice].astype("string")
-        #X_train = df['id'].astype("string")
+        X_train = abstract.astype("string")
         #X_train = abstract.values.tolist()
-        results = classifier(abstract, truncation=True)
+        results = classifier(X_train, truncation=True)
         #result = hupd_model(make_choice)[0]
         score = result['score']
         st.write("The Patentability Score is:", score)
