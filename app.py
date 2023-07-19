@@ -30,12 +30,11 @@ with st.form("patent-form"):
     
     if submitted:
         #st.write("Outside the form")
-        hupd_model = pipeline(task="fill-mask", model="turingmachine/hupd-distilroberta-base")
+        hupd_model = pipeline(model="turingmachine/hupd-distilroberta-base")
         result = hupd_model(make_choice)[0]
         score = result['score']
         st.write("The Patentability Score is:", score)
-    else:
-         st.write("Please Select a Patent Application Number!!")
+        
 ######NEW
 
 pd.options.display.max_colwidth = 100000
