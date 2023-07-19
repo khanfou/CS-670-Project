@@ -2,8 +2,11 @@ import streamlit as st
 from datasets import load_dataset
 from transformers import pipeline
 import pandas as pd
-
+import torch
+from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
+from sklearn.model_selection import train_test_split
 from datasets import load_dataset
+
 dataset_dict = load_dataset('HUPD/hupd',
     name='sample',
     data_files="https://huggingface.co/datasets/HUPD/hupd/blob/main/hupd_metadata_2022-02-22.feather", 
@@ -30,10 +33,17 @@ with st.form("patent-form"):
     
     if submitted:
         #st.write("Outside the form")
-        hupd_model = pipeline(model="turingmachine/hupd-distilroberta-base")
-        result = hupd_model(make_choice)[0]
+        model_name = "distilbert-base-uncased-finetuned-sst-2-english"
+        model = AutoModelForSequenceClassification.from_pretrained(model_name)
+        tokenizer = AutoTokenizer.from_pretrained(model_name)
+        classifier = pipeline("sentiment-analysis", model=model, tokenizer=tokenizer)
+        abstract = df['abstract'].loc[df['patent_number'] == make_choice]
+        X_train = abstract.values.tolist()
+        results = classifier(X_train, truncation=True)
+        #result = hupd_model(make_choice)[0]
         score = result['score']
         st.write("The Patentability Score is:", score)
+
         
 ######NEW
 
