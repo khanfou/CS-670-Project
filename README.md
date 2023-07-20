@@ -12,7 +12,7 @@ Pinned: false
 # Milestone - 3
 ## Harvard USPTO Patentability Score in Streamlit
 
-This application classifies a user selected Patent Application Number to show the patentibility score
+This application classifies a user selected Patent Application Number and displays its patentibility score.
 
 
 ## Demo
