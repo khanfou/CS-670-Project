@@ -1,10 +1,9 @@
 import streamlit as st
 from datasets import load_dataset
-from transformers import pipeline
+#from transformers import pipeline
 import pandas as pd
 import torch
 from transformers import AutoTokenizer, AutoModelForSequenceClassification, pipeline
-from datasets import load_dataset
 
 dataset_dict = load_dataset('HUPD/hupd',
     name='sample',
